@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lex & Partners — Юридическая компания</title>
+<meta name="description" content="Юридическая защита бизнеса и граждан в Казахстане. Регистрация бизнеса, договорное право, трудовые споры, представительство в судах.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#152238;
+    --navy-2:#1c2e4a;
+    --gold:#c9a227;
+    --gold-soft:#e4c766;
+    --cream:#f6f4ef;
+    --paper:#fbfaf7;
+    --ink:#20242c;
+    --ink-soft:#5c6373;
+    --line:#dedad0;
+    --radius:2px;
+    --serif:'Fraunces', serif;
+    --sans:'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .container{max-width:1120px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; letter-spacing:-0.01em; color:var(--navy);}
+  .eyebrow{
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:12px; display:block;
+  }
+  section{padding:96px 0;}
+  @media(max-width:640px){section{padding:64px 0;}}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(21,34,56,0.97);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    font-family:var(--serif); font-size:21px; font-weight:600; color:#fff;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo-mark{
+    width:28px;height:28px; border:1.5px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; color:var(--gold); font-weight:700;
+  }
+  nav.menu{display:flex; gap:32px; align-items:center;}
+  nav.menu a{
+    color:#cfd4de; font-size:14px; font-weight:500;
+    transition:color .2s;
+  }
+  nav.menu a:hover{color:#fff;}
+  .nav-right{display:flex; align-items:center; gap:20px;}
+  .lang-switch{
+    display:flex; background:rgba(255,255,255,0.08); border-radius:20px; padding:2px;
+  }
+  .lang-switch button{
+    background:none; border:none; color:#aeb4c0; font-size:12px; font-weight:600;
+    padding:5px 11px; border-radius:18px; transition:all .2s;
+  }
+  .lang-switch button.active{background:var(--gold); color:var(--navy);}
+  .phone-cta{color:#fff; font-size:14px; font-weight:600; white-space:nowrap;}
+  .btn{
+    display:inline-block; padding:12px 26px; border-radius:var(--radius);
+    font-size:14px; font-weight:600; letter-spacing:.02em;
+    border:1px solid transparent; transition:all .2s;
+  }
+  .btn-primary{background:var(--gold); color:var(--navy);}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-outline{border-color:rgba(255,255,255,0.4); color:#fff;}
+  .btn-outline:hover{border-color:#fff;}
+  .btn-dark-outline{border-color:var(--navy); color:var(--navy);}
+  .btn-dark-outline:hover{background:var(--navy); color:#fff;}
+  .burger{display:none; background:none; border:none; color:#fff; font-size:22px;}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 60%, #223757 100%);
+    color:#fff; padding:110px 0 100px; position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; right:-120px; top:-120px; width:480px; height:480px;
+    border:1px solid rgba(201,162,39,0.18); border-radius:50%;
+  }
+  .hero::before{
+    content:""; position:absolute; right:-40px; top:-40px; width:340px; height:340px;
+    border:1px solid rgba(201,162,39,0.14); border-radius:50%;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px; align-items:center; position:relative;
+  }
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{
+    color:#fff; font-size:clamp(32px,4.6vw,54px); line-height:1.12; margin-bottom:22px;
+  }
+  .hero h1 em{color:var(--gold-soft); font-style:normal;}
+  .hero p.lead{color:#c6cbd6; font-size:18px; max-width:480px; margin-bottom:34px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+  .hero-stats{display:flex; gap:36px; flex-wrap:wrap;}
+  .hero-stats div b{
+    display:block; font-family:var(--serif); font-size:28px; color:var(--gold-soft);
+  }
+  .hero-stats div span{font-size:13px; color:#a7adba;}
+
+  .quick-form{
+    background:var(--paper); border-radius:6px; padding:32px; color:var(--ink);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.4);
+  }
+  .quick-form h3{font-size:19px; margin-bottom:6px;}
+  .quick-form p{font-size:13px; color:var(--ink-soft); margin-bottom:20px;}
+  .field{margin-bottom:14px;}
+  .field label{font-size:12px; color:var(--ink-soft); display:block; margin-bottom:5px;}
+  .field input,.field textarea{
+    width:100%; border:1px solid var(--line); border-radius:4px; padding:11px 12px;
+    font-family:var(--sans); font-size:14px; background:#fff;
+  }
+  .field input:focus,.field textarea:focus{outline:2px solid var(--gold); outline-offset:1px;}
+  .consent{display:flex; gap:8px; align-items:flex-start; font-size:12px; color:var(--ink-soft); margin-bottom:18px;}
+  .consent input{margin-top:3px;}
+  .quick-form .btn{width:100%; text-align:center;}
+
+  /* ===== About ===== */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid h2{font-size:34px; margin-bottom:20px;}
+  .about-grid p{color:var(--ink-soft); font-size:16px; margin-bottom:16px;}
+  .stat-cards{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .stat-card{
+    background:var(--cream); border-left:3px solid var(--gold); padding:22px 20px; border-radius:4px;
+  }
+  .stat-card b{font-family:var(--serif); font-size:30px; color:var(--navy); display:block;}
+  .stat-card span{font-size:13px; color:var(--ink-soft);}
+
+  /* ===== Services ===== */
+  .section-head{text-align:center; max-width:600px; margin:0 auto 56px;}
+  .section-head h2{font-size:34px; margin-bottom:12px;}
+  .section-head p{color:var(--ink-soft); font-size:16px;}
+  .services-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:26px 22px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .service-card:hover{transform:translateY(-4px); box-shadow:0 16px 30px -18px rgba(21,34,56,0.35);}
+  .service-icon{
+    width:42px; height:42px; border-radius:50%; background:var(--cream);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--gold); font-size:18px;
+  }
+  .service-card h3{font-size:16px; margin-bottom:8px; color:var(--navy);}
+  .service-card p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* ===== Pricing ===== */
+  .pricing{background:var(--navy); color:#fff;}
+  .pricing .section-head h2, .pricing .section-head p{color:#fff;}
+  .pricing .section-head p{color:#b9bfcc;}
+  .price-note{font-size:12px; color:#8b93a1; text-align:center; max-width:560px; margin:36px auto 0;}
+  .price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media(max-width:800px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{
+    background:var(--navy-2); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:32px 28px;
+  }
+  .price-card.featured{border-color:var(--gold); position:relative; transform:translateY(-8px);}
+  .price-card.featured::before{
+    content:"Популярный"; position:absolute; top:-13px; left:28px; background:var(--gold); color:var(--navy);
+    font-size:11px; font-weight:700; padding:4px 10px; border-radius:12px; letter-spacing:.04em;
+  }
+  .price-card h3{color:#fff; font-size:19px; margin-bottom:6px;}
+  .price-card .price{font-family:var(--serif); font-size:32px; color:var(--gold-soft); margin:12px 0 20px;}
+  .price-card .price span{font-size:14px; color:#8b93a1; font-family:var(--sans);}
+  .price-card ul{list-style:none; margin-bottom:24px;}
+  .price-card li{font-size:13.5px; color:#c6cbd6; padding:7px 0; border-top:1px solid rgba(255,255,255,0.08);}
+  .price-card li:first-child{border-top:none;}
+
+  /* ===== Process ===== */
+  .process-track{position:relative; display:flex; justify-content:space-between; margin-top:20px;}
+  .process-track::before{
+    content:""; position:absolute; top:20px; left:20px; right:20px; height:1px; background:var(--line);
+  }
+  @media(max-width:800px){
+    .process-track{flex-direction:column; gap:36px;}
+    .process-track::before{display:none;}
+  }
+  .process-step{flex:1; text-align:center; padding:0 12px; position:relative;}
+  @media(max-width:800px){.process-step{text-align:left; padding-left:52px;}}
+  .step-num{
+    width:40px; height:40px; border-radius:50%; background:var(--paper); border:1.5px solid var(--gold);
+    color:var(--navy); font-family:var(--serif); font-weight:600; font-size:16px;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 16px; position:relative; z-index:2;
+  }
+  @media(max-width:800px){.step-num{position:absolute; left:0; top:0; margin:0;}}
+  .process-step h3{font-size:15px; margin-bottom:6px;}
+  .process-step p{font-size:13px; color:var(--ink-soft);}
+
+  /* ===== Certificates ===== */
+  .cert-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media(max-width:800px){.cert-grid{grid-template-columns:repeat(2,1fr);}}
+  .cert-item{
+    background:var(--cream); border:1px solid var(--line); border-radius:6px; aspect-ratio:3/4;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    cursor:pointer; transition:box-shadow .2s;
+  }
+  .cert-item:hover{box-shadow:0 14px 28px -16px rgba(21,34,56,0.3);}
+  .cert-item .icon{font-size:26px; color:var(--gold);}
+  .cert-item span{font-size:12.5px; color:var(--ink-soft); text-align:center; padding:0 10px;}
+
+  /* Lightbox */
+  .lightbox-overlay{
+    display:none; position:fixed; inset:0; background:rgba(15,20,30,0.88); z-index:200;
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .lightbox-overlay.open{display:flex;}
+  .lightbox-box{
+    background:#fff; border-radius:8px; padding:40px; max-width:420px; text-align:center; position:relative;
+  }
+  .lightbox-box .icon{font-size:44px; color:var(--gold); margin-bottom:16px;}
+  .lightbox-box h3{margin-bottom:8px;}
+  .lightbox-box p{color:var(--ink-soft); font-size:14px;}
+  .lightbox-close{
+    position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; color:var(--ink-soft);
+  }
+
+  /* ===== Advantages ===== */
+  .adv-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media(max-width:900px){.adv-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.adv-grid{grid-template-columns:1fr;}}
+  .adv-item{text-align:center;}
+  .adv-item .icon{font-size:26px; color:var(--gold); margin-bottom:12px;}
+  .adv-item h3{font-size:15px; margin-bottom:6px;}
+  .adv-item p{font-size:13px; color:var(--ink-soft);}
+
+  /* ===== Team ===== */
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+  .team-card{text-align:center;}
+  .avatar{
+    width:100%; aspect-ratio:1; border-radius:50%; background:linear-gradient(150deg,var(--navy),var(--navy-2));
+    display:flex; align-items:center; justify-content:center; color:var(--gold-soft); font-family:var(--serif);
+    font-size:26px; margin-bottom:16px;
+  }
+  .team-card h3{font-size:15px; margin-bottom:2px;}
+  .team-card span{font-size:12.5px; color:var(--ink-soft);}
+
+  /* ===== Cases/Reviews ===== */
+  .cases-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media(max-width:800px){.cases-grid{grid-template-columns:1fr;}}
+  .case-card{background:var(--cream); border-radius:8px; padding:28px;}
+  .case-card .eyebrow{margin-bottom:10px;}
+  .case-card p{color:var(--ink-soft); font-size:14px; margin-bottom:14px;}
+  .review-card{background:#fff; border:1px solid var(--line); border-radius:8px; padding:26px;}
+  .stars{color:var(--gold); font-size:14px; margin-bottom:10px;}
+  .review-card p.txt{font-size:14px; color:var(--ink-soft); margin-bottom:14px; font-style:italic;}
+  .review-name{font-size:13px; font-weight:600; color:var(--navy);}
+  .review-source{font-size:12px; color:var(--ink-soft);}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; padding:22px 4px;
+    display:flex; justify-content:space-between; align-items:center; font-size:16px; font-weight:600; color:var(--navy);
+  }
+  .faq-q .plus{transition:transform .25s; color:var(--gold); font-size:20px;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-a p{padding:0 4px 22px; color:var(--ink-soft); font-size:14px; max-width:680px;}
+
+  /* ===== Contacts ===== */
+  .contacts{background:var(--cream);}
+  .contacts-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media(max-width:800px){.contacts-grid{grid-template-columns:1fr;}}
+  .contact-line{display:flex; gap:14px; margin-bottom:18px; align-items:flex-start;}
+  .contact-line .icon{color:var(--gold); font-size:16px; margin-top:2px;}
+  .contact-line b{display:block; font-size:14px; color:var(--navy);}
+  .contact-line span{font-size:13.5px; color:var(--ink-soft);}
+  .map-placeholder{
+    background:#e4e0d4; border-radius:8px; height:220px; display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:13px; margin-top:24px;
+  }
+  .contact-form{background:#fff; border-radius:8px; padding:32px; border:1px solid var(--line);}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy); color:#a7adba; padding:48px 0 28px; font-size:13px;}
+  .footer-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:32px;}
+  .footer-links{display:flex; gap:24px; flex-wrap:wrap;}
+  .footer-links a{color:#a7adba;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;
+  }
+  .social{display:flex; gap:12px;}
+  .social a{width:32px; height:32px; border:1px solid rgba(255,255,255,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px;}
+
+  /* ===== Floating buttons ===== */
+  .float-stack{position:fixed; right:20px; bottom:20px; display:flex; flex-direction:column; gap:10px; z-index:150;}
+  .float-btn{
+    width:48px; height:48px; border-radius:50%; background:var(--navy); color:#fff; border:none;
+    display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 10px 20px -8px rgba(0,0,0,0.4);
+  }
+  .float-btn.gold{background:var(--gold); color:var(--navy);}
+
+  /* ===== Cookie banner ===== */
+  .cookie-banner{
+    position:fixed; left:0; right:0; bottom:0; background:var(--navy); color:#fff; padding:16px 24px;
+    display:flex; gap:20px; align-items:center; justify-content:center; flex-wrap:wrap; z-index:180; font-size:13px;
+    transform:translateY(100%); transition:transform .4s ease;
+  }
+  .cookie-banner.show{transform:translateY(0);}
+  .cookie-banner button{background:var(--gold); color:var(--navy); border:none; padding:8px 18px; border-radius:4px; font-weight:600; font-size:13px;}
+
+  [data-lang="kz"]{display:none;}
+  html[data-active-lang="kz"] [data-lang="kz"]{display:inline;}
+  html[data-active-lang="kz"] [data-lang="ru"]{display:none;}
+
+  @media(max-width:900px){
+    nav.menu{display:none;}
+    .burger{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="logo-mark">L&P</span> Lex & Partners</a>
+    <nav class="menu">
+      <a href="#services"><span data-lang="ru">Услуги</span><span data-lang="kz">Қызметтер</span></a>
+      <a href="#pricing"><span data-lang="ru">Цены</span><span data-lang="kz">Бағалар</span></a>
+      <a href="#certificates"><span data-lang="ru">Сертификаты</span><span data-lang="kz">Сертификаттар</span></a>
+      <a href="#about"><span data-lang="ru">О нас</span><span data-lang="kz">Біз туралы</span></a>
+      <a href="#contacts"><span data-lang="ru">Контакты</span><span data-lang="kz">Байланыс</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button class="active" data-setlang="ru">RU</button>
+        <button data-setlang="kz">KZ</button>
+      </div>
+      <a href="tel:+77172000000" class="phone-cta">+7 717 200 00 00</a>
+      <a href="#quick-form" class="btn btn-primary">
+        <span data-lang="ru">Заказать звонок</span><span data-lang="kz">Қоңырау сұрау</span>
+      </a>
+    </div>
+    <button class="burger">☰</button>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span data-lang="ru">Юридическая компания в Казахстане</span><span data-lang="kz">Қазақстандағы заң компаниясы</span></span>
+      <h1>
+        <span data-lang="ru">Юридическая защита <em>бизнеса и граждан</em> в Казахстане</span>
+        <span data-lang="kz">Қазақстанда <em>бизнес пен азаматтарды</em> заңды қорғау</span>
+      </h1>
+      <p class="lead">
+        <span data-lang="ru">Регистрация бизнеса, договорное право, трудовые и семейные споры, представительство в судах всех инстанций — прозрачно и по фиксированным ценам.</span>
+        <span data-lang="kz">Бизнесті тіркеу, шарттық құқық, еңбек және отбасы даулары, барлық сот сатыларында өкілдік ету — ашық және тұрақты бағамен.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="#quick-form" class="btn btn-primary"><span data-lang="ru">Получить консультацию</span><span data-lang="kz">Кеңес алу</span></a>
+        <a href="#services" class="btn btn-outline"><span data-lang="ru">Наши услуги</span><span data-lang="kz">Қызметтеріміз</span></a>
+      </div>
+      <div class="hero-stats">
+        <div><b>9</b><span data-lang="ru">лет на рынке</span><span data-lang="kz">нарықта жыл</span></div>
+        <div><b>640+</b><span data-lang="ru">завершённых дел</span><span data-lang="kz">аяқталған іс</span></div>
+        <div><b>98%</b><span data-lang="ru">довольных клиентов</span><span data-lang="kz">риза клиент</span></div>
+        <div><b>12</b><span data-lang="ru">специалистов</span><span data-lang="kz">маман</span></div>
+      </div>
+    </div>
+
+    <form class="quick-form" id="quick-form">
+      <h3><span data-lang="ru">Быстрая заявка</span><span data-lang="kz">Жылдам өтінім</span></h3>
+      <p><span data-lang="ru">Перезвоним в течение 15 минут в рабочее время</span><span data-lang="kz">Жұмыс уақытында 15 минут ішінде хабарласамыз</span></p>
+      <div class="field">
+        <label><span data-lang="ru">Имя</span><span data-lang="kz">Аты-жөні</span></label>
+        <input type="text" required placeholder="Асхат">
+      </div>
+      <div class="field">
+        <label><span data-lang="ru">Телефон</span><span data-lang="kz">Телефон</span></label>
+        <input type="tel" required placeholder="+7 (___) ___-__-__">
+      </div>
+      <div class="consent">
+        <input type="checkbox" required id="consent1">
+        <label for="consent1"><span data-lang="ru">Согласен(а) на обработку персональных данных</span><span data-lang="kz">Дербес деректерді өңдеуге келісемін</span></label>
+      </div>
+      <button type="submit" class="btn btn-primary"><span data-lang="ru">Отправить заявку</span><span data-lang="kz">Өтінімді жіберу</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== About ===== -->
+<section id="about">
+  <div class="container about-grid">
+    <div>
+      <span class="eyebrow"><span data-lang="ru">О компании</span><span data-lang="kz">Компания туралы</span></span>
+      <h2><span data-lang="ru">Экспертиза, которой доверяют</span><span data-lang="kz">Сенім артатын сараптама</span></h2>
+      <p><span data-lang="ru">Lex & Partners — команда практикующих юристов, сопровождающая бизнес и частных клиентов по всему Казахстану. Мы строим работу на прозрачности: понятные договоры, фиксированные тарифы и регулярная обратная связь по каждому делу.</span>
+      <span data-lang="kz">Lex & Partners — Қазақстан бойынша бизнес пен жеке клиенттерге қызмет көрсететін тәжірибелі заңгерлер тобы. Біз жұмысымызды ашықтыққа негіздейміз: түсінікті шарттар, тұрақты тарифтер және әр іс бойынша тұрақты кері байланыс.</span></p>
+      <p><span data-lang="ru">Наш подход — не просто закрыть формальность, а реально снизить риски клиента и довести дело до результата.</span>
+      <span data-lang="kz">Біздің тәсіліміз — тек формальдылықты орындау емес, клиенттің тәуекелдерін нақты азайтып, істі нәтижеге жеткізу.</span></p>
+    </div>
+    <div class="stat-cards">
+      <div class="stat-card"><b>9</b><span data-lang="ru">лет успешной практики</span><span data-lang="kz">табысты тәжірибе жылы</span></div>
+      <div class="stat-card"><b>640+</b><span data-lang="ru">завершённых дел</span><span data-lang="kz">аяқталған іс</span></div>
+      <div class="stat-card"><b>12</b><span data-lang="ru">специалистов в команде</span><span data-lang="kz">командадағы маман</span></div>
+      <div class="stat-card"><b>98%</b><span data-lang="ru">клиентов остаются с нами</span><span data-lang="kz">клиент бізбен қалады</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Services ===== -->
+<section id="services" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Направления работы</span><span data-lang="kz">Жұмыс бағыттары</span></span>
+      <h2><span data-lang="ru">Юридические услуги</span><span data-lang="kz">Заң қызметтері</span></h2>
+      <p><span data-lang="ru">Полный цикл сопровождения — от регистрации бизнеса до представительства в суде</span><span data-lang="kz">Толық сүйемелдеу циклі — бизнесті тіркеуден сотта өкілдік етуге дейін</span></p>
+    </div>
+    <div class="services-grid" id="services-grid"></div>
+  </div>
+</section>
+
+<!-- ===== Pricing ===== -->
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Тарифы</span><span data-lang="kz">Тарифтер</span></span>
+      <h2><span data-lang="ru">Прозрачные цены</span><span data-lang="kz">Ашық бағалар</span></h2>
+      <p><span data-lang="ru">Три пакета абонентского обслуживания — выбирайте по масштабу задач</span><span data-lang="kz">Үш абоненттік қызмет көрсету пакеті — тапсырма көлеміне қарай таңдаңыз</span></p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3><span data-lang="ru">Базовый</span><span data-lang="kz">Негізгі</span></h3>
+        <div class="price">120 000 ₸<span> / <span data-lang="ru">мес.</span><span data-lang="kz">ай</span></span></div>
+        <ul>
+          <li><span data-lang="ru">До 5 консультаций в месяц</span><span data-lang="kz">Айына 5 кеңеске дейін</span></li>
+          <li><span data-lang="ru">Проверка договоров (до 3 шт.)</span><span data-lang="kz">Шарттарды тексеру (3-ке дейін)</span></li>
+          <li><span data-lang="ru">Ответ в течение 24 часов</span><span data-lang="kz">24 сағат ішінде жауап</span></li>
+        </ul>
+        <a href="#quick-form" class="btn btn-outline" style="border-color:rgba(255,255,255,.3); width:100%; text-align:center; display:block;"><span data-lang="ru">Выбрать</span><span data-lang="kz">Таңдау</span></a>
+      </div>
+      <div class="price-card featured">
+        <h3><span data-lang="ru">Бизнес</span><span data-lang="kz">Бизнес</span></h3>
+        <div class="price">280 000 ₸<span> / <span data-lang="ru">мес.</span><span data-lang="kz">ай</span></span></div>
+        <ul>
+          <li><span data-lang="ru">Безлимитные консультации</span><span data-lang="kz">Шексіз кеңестер</span></li>
+          <li><span data-lang="ru">Сопровождение сделок</span><span data-lang="kz">Мәмілелерді сүйемелдеу</span></li>
+          <li><span data-lang="ru">Представительство в суде — 1 дело</span><span data-lang="kz">Сотта өкілдік — 1 іс</span></li>
+          <li><span data-lang="ru">Персональный юрист</span><span data-lang="kz">Жеке заңгер</span></li>
+        </ul>
+        <a href="#quick-form" class="btn btn-primary" style="width:100%; text-align:center; display:block;"><span data-lang="ru">Выбрать</span><span data-lang="kz">Таңдау</span></a>
+      </div>
+      <div class="price-card">
+        <h3><span data-lang="ru">Премиум</span><span data-lang="kz">Премиум</span></h3>
+        <div class="price"><span data-lang="ru">Индивидуально</span><span data-lang="kz">Жеке</span></div>
+        <ul>
+          <li><span data-lang="ru">Полное юридическое сопровождение бизнеса</span><span data-lang="kz">Бизнесті толық заңды сүйемелдеу</span></li>
+          <li><span data-lang="ru">Выделенная команда юристов</span><span data-lang="kz">Арнайы заңгерлер тобы</span></li>
+          <li><span data-lang="ru">Приоритетные сроки</span><span data-lang="kz">Басым мерзімдер</span></li>
+        </ul>
+        <a href="#quick-form" class="btn btn-outline" style="border-color:rgba(255,255,255,.3); width:100%; text-align:center; display:block;"><span data-lang="ru">Обсудить</span><span data-lang="kz">Талқылау</span></a>
+      </div>
+    </div>
+    <p class="price-note">
+      <span data-lang="ru">Цены носят информационный характер и не являются публичной офертой. Итоговая стоимость определяется после консультации и анализа ситуации клиента.</span>
+      <span data-lang="kz">Бағалар ақпараттық сипатта және жария оферта болып табылмайды. Түпкілікті құн клиенттің жағдайын талдағаннан кейін анықталады.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===== Process ===== -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Процесс</span><span data-lang="kz">Процесс</span></span>
+      <h2><span data-lang="ru">Как мы работаем</span><span data-lang="kz">Біз қалай жұмыс істейміз</span></h2>
+    </div>
+    <div class="process-track">
+      <div class="process-step"><div class="step-num">1</div><h3><span data-lang="ru">Заявка или звонок</span><span data-lang="kz">Өтінім немесе қоңырау</span></h3><p><span data-lang="ru">Оставляете контакты удобным способом</span><span data-lang="kz">Ыңғайлы жолмен байланысыңызды қалдырасыз</span></p></div>
+      <div class="process-step"><div class="step-num">2</div><h3><span data-lang="ru">Консультация</span><span data-lang="kz">Кеңес беру</span></h3><p><span data-lang="ru">Оцениваем ситуацию и предлагаем решение</span><span data-lang="kz">Жағдайды бағалап, шешім ұсынамыз</span></p></div>
+      <div class="process-step"><div class="step-num">3</div><h3><span data-lang="ru">Договор</span><span data-lang="kz">Шарт</span></h3><p><span data-lang="ru">Согласуем стоимость и подписываем договор</span><span data-lang="kz">Құнын келісіп, шартқа қол қоямыз</span></p></div>
+      <div class="process-step"><div class="step-num">4</div><h3><span data-lang="ru">Работа по делу</span><span data-lang="kz">Іс бойынша жұмыс</span></h3><p><span data-lang="ru">Информируем о ходе выполнения</span><span data-lang="kz">Барысы туралы хабардар етеміз</span></p></div>
+      <div class="process-step"><div class="step-num">5</div><h3><span data-lang="ru">Результат</span><span data-lang="kz">Нәтиже</span></h3><p><span data-lang="ru">Сопровождение при необходимости</span><span data-lang="kz">Қажет болса, қолдау көрсетеміз</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Certificates ===== -->
+<section id="certificates" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Подтверждение квалификации</span><span data-lang="kz">Біліктілікті растау</span></span>
+      <h2><span data-lang="ru">Сертификаты и лицензии</span><span data-lang="kz">Сертификаттар мен лицензиялар</span></h2>
+    </div>
+    <div class="cert-grid" id="cert-grid"></div>
+  </div>
+</section>
+
+<div class="lightbox-overlay" id="lightbox">
+  <div class="lightbox-box">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <div class="icon">📜</div>
+    <h3 id="lightbox-title">Сертификат</h3>
+    <p id="lightbox-desc"><span data-lang="ru">Скан документа откроется здесь в полном размере</span><span data-lang="kz">Құжаттың сканы осында толық көлемде ашылады</span></p>
+  </div>
+</div>
+
+<!-- ===== Advantages ===== -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Почему мы</span><span data-lang="kz">Неге біз</span></span>
+      <h2><span data-lang="ru">Преимущества</span><span data-lang="kz">Артықшылықтар</span></h2>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-item"><div class="icon">🔒</div><h3><span data-lang="ru">Конфиденциальность</span><span data-lang="kz">Құпиялылық</span></h3><p><span data-lang="ru">Защита информации клиента на всех этапах</span><span data-lang="kz">Барлық кезеңде клиент ақпаратын қорғау</span></p></div>
+      <div class="adv-item"><div class="icon">⚖️</div><h3><span data-lang="ru">Опытная команда</span><span data-lang="kz">Тәжірибелі команда</span></h3><p><span data-lang="ru">Специализация по ключевым направлениям права</span><span data-lang="kz">Құқықтың негізгі бағыттары бойынша мамандану</span></p></div>
+      <div class="adv-item"><div class="icon">📄</div><h3><span data-lang="ru">Прозрачные условия</span><span data-lang="kz">Ашық шарттар</span></h3><p><span data-lang="ru">Заключаем договор до начала работы</span><span data-lang="kz">Жұмысты бастамас бұрын шарт жасаймыз</span></p></div>
+      <div class="adv-item"><div class="icon">🌐</div><h3><span data-lang="ru">Работа онлайн</span><span data-lang="kz">Онлайн жұмыс</span></h3><p><span data-lang="ru">Сопровождение по всему Казахстану</span><span data-lang="kz">Бүкіл Қазақстан бойынша қолдау</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Team ===== -->
+<section style="background:var(--cream);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Команда</span><span data-lang="kz">Команда</span></span>
+      <h2><span data-lang="ru">Наши специалисты</span><span data-lang="kz">Біздің мамандар</span></h2>
+    </div>
+    <div class="team-grid" id="team-grid"></div>
+  </div>
+</section>
+
+<!-- ===== Cases & Reviews ===== -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span data-lang="ru">Практика</span><span data-lang="kz">Тәжірибе</span></span>
+      <h2><span data-lang="ru">Кейсы и отзывы</span><span data-lang="kz">Кейстер мен пікірлер</span></h2>
+    </div>
+    <div class="cases-grid" style="margin-bottom:24px;">
+      <div class="case-card">
+        <span class="eyebrow"><span data-lang="ru">Договорное право</span><span data-lang="kz">Шарттық құқық</span></span>
+        <p><span data-lang="ru">Провели due diligence поставщика и пересмотрели условия контракта, снизив риски клиента.</span><span data-lang="kz">Жеткізушіге due diligence жүргіздік және клиенттің тәуекелдерін азайту үшін келісімшарт талаптарын қайта қарадық.</span></p>
+      </div>
+      <div class="case-card">
+        <span class="eyebrow"><span data-lang="ru">Трудовые споры</span><span data-lang="kz">Еңбек дауы</span></span>
+        <p><span data-lang="ru">Успешно урегулировали спор о незаконном увольнении в досудебном порядке.</span><span data-lang="kz">Заңсыз жұмыстан босату дауын сотқа дейінгі тәртіппен сәтті реттедік.</span></p>
+      </div>
+    </div>
+    <div class="cases-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="txt"><span data-lang="ru">Помогли зарегистрировать ТОО за 3 дня и объяснили каждый шаг простым языком.</span><span data-lang="kz">ЖШС-ні 3 күнде тіркеуге көмектесті және әр қадамды қарапайым тілмен түсіндірді.</span></p>
+        <div class="review-name">Мадина Ержанова</div>
+        <div class="review-source">2GIS</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="txt"><span data-lang="ru">Профессиональное сопровождение сделки, все сроки соблюдены.</span><span data-lang="kz">Мәмілені кәсіби сүйемелдеу, барлық мерзімдер сақталды.</span></p>
+        <div class="review-name">Ерлан Ахметов</div>
+        <div class="review-source">Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section style="background:var(--cream);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2><span data-lang="ru">Частые вопросы</span><span data-lang="kz">Жиі қойылатын сұрақтар</span></h2>
+    </div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- ===== Contacts ===== -->
+<section id="contacts" class="contacts">
+  <div class="container contacts-grid">
+    <div>
+      <span class="eyebrow"><span data-lang="ru">Контакты</span><span data-lang="kz">Байланыс</span></span>
+      <h2 style="margin-bottom:24px;"><span data-lang="ru">Свяжитесь с нами</span><span data-lang="kz">Бізбен байланысыңыз</span></h2>
+      <div class="contact-line"><span class="icon">📍</span><div><b><span data-lang="ru">Адрес</span><span data-lang="kz">Мекенжай</span></b><span data-lang="ru">г. Астана, пр. Мәңгілік Ел, 55</span><span data-lang="kz">Астана қ., Мәңгілік Ел даңғылы, 55</span></div></div>
+      <div class="contact-line"><span class="icon">📞</span><div><b><span data-lang="ru">Телефон</span><span data-lang="kz">Телефон</span></b><span>+7 717 200 00 00</span></div></div>
+      <div class="contact-line"><span class="icon">✉️</span><div><b>Email</b><span>info@lexpartners.kz</span></div></div>
+      <div class="contact-line"><span class="icon">🕒</span><div><b><span data-lang="ru">График работы</span><span data-lang="kz">Жұмыс кестесі</span></b><span data-lang="ru">Пн–Пт, 9:00–19:00</span><span data-lang="kz">Дс–Жм, 9:00–19:00</span></div></div>
+      <div class="map-placeholder"><span data-lang="ru">Карта 2GIS / Google Maps</span><span data-lang="kz">2GIS / Google Maps картасы</span></div>
+    </div>
+    <form class="contact-form">
+      <div class="field"><label><span data-lang="ru">Имя</span><span data-lang="kz">Аты</span></label><input type="text" required></div>
+      <div class="field"><label><span data-lang="ru">Телефон</span><span data-lang="kz">Телефон</span></label><input type="tel" required></div>
+      <div class="field"><label>Email</label><input type="email"></div>
+      <div class="field"><label><span data-lang="ru">Сообщение</span><span data-lang="kz">Хабарлама</span></label><textarea rows="4"></textarea></div>
+      <div class="consent"><input type="checkbox" required id="consent2"><label for="consent2"><span data-lang="ru">Согласен(а) на обработку персональных данных</span><span data-lang="kz">Дербес деректерді өңдеуге келісемін</span></label></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;"><span data-lang="ru">Отправить</span><span data-lang="kz">Жіберу</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="logo" style="color:#fff;"><span class="logo-mark">L&P</span> Lex & Partners</div>
+      <div class="footer-links">
+        <a href="#"><span data-lang="ru">Политика конфиденциальности</span><span data-lang="kz">Құпиялылық саясаты</span></a>
+        <a href="#"><span data-lang="ru">Согласие на обработку ПДн</span><span data-lang="kz">ДД өңдеуге келісім</span></a>
+        <a href="#"><span data-lang="ru">Пользовательское соглашение</span><span data-lang="kz">Пайдаланушы келісімі</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>ТОО «Lex & Partners», БИН 000000000000, г. Астана</span>
+      <div class="social">
+        <a href="#" aria-label="WhatsApp">W</a>
+        <a href="#" aria-label="Telegram">T</a>
+        <a href="#" aria-label="Instagram">I</a>
+      </div>
+      <span id="copyright-year">© 2026 Lex & Partners</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Floating buttons ===== -->
+<div class="float-stack">
+  <a href="https://wa.me/77172000000" class="float-btn" style="background:#25D366;" aria-label="WhatsApp">W</a>
+  <a href="https://t.me/lexpartners" class="float-btn" style="background:#229ED9;" aria-label="Telegram">T</a>
+  <button class="float-btn gold" id="to-top" aria-label="Наверх">↑</button>
+</div>
+
+<!-- ===== Cookie banner ===== -->
+<div class="cookie-banner" id="cookie-banner">
+  <span><span data-lang="ru">Мы используем cookie для улучшения работы сайта.</span><span data-lang="kz">Сайттың жұмысын жақсарту үшін cookie файлдарын қолданамыз.</span></span>
+  <button id="cookie-accept"><span data-lang="ru">Принять</span><span data-lang="kz">Қабылдау</span></button>
+</div>
+
+<script>
+// ---------- Data ----------
+const SERVICES = [
+  {icon:"🏢", ru:["Регистрация бизнеса","Регистрация и сопровождение ТОО, ИП, лицензирование."], kz:["Бизнесті тіркеу","ЖШС, ЖК тіркеу және сүйемелдеу, лицензиялау."]},
+  {icon:"📑", ru:["Договорное право","Разработка и проверка договоров, анализ контрагентов."], kz:["Шарттық құқық","Шарттарды әзірлеу және тексеру, контрагенттерді талдау."]},
+  {icon:"👥", ru:["Трудовые споры","Защита интересов работника и работодателя."], kz:["Еңбек даулары","Қызметкер мен жұмыс берушінің мүддесін қорғау."]},
+  {icon:"👨‍👩‍👧", ru:["Семейное право","Развод, раздел имущества, наследственные споры."], kz:["Отбасы құқығы","Ажырасу, мүлікті бөлу, мұрагерлік дау."]},
+  {icon:"💰", ru:["Налоговое консультирование","Оптимизация и сопровождение налоговых проверок."], kz:["Салықтық кеңес беру","Салықтық тексерулерді оңтайландыру және сүйемелдеу."]},
+  {icon:"⚖️", ru:["Представительство в судах","Все инстанции, от районного до Верховного суда."], kz:["Соттарда өкілдік ету","Аудандықтан Жоғарғы Сотқа дейін барлық сатылар."]},
+  {icon:"📉", ru:["Взыскание задолженности","Досудебное урегулирование и исполнительное производство."], kz:["Берешекті өндіру","Сотқа дейінгі реттеу және атқарушылық іс жүргізу."]},
+  {icon:"🗂️", ru:["Абонентское обслуживание","Постоянное юридическое сопровождение бизнеса."], kz:["Абоненттік қызмет","Бизнесті тұрақты заңды сүйемелдеу."]},
+];
+
+const CERTS = [
+  {ru:"Лицензия на юридическую деятельность", kz:"Заң қызметіне лицензия"},
+  {ru:"Сертификат адвокатской палаты", kz:"Адвокаттар алқасының сертификаты"},
+  {ru:"Диплом о высшем юридическом образовании", kz:"Заң білімі туралы диплом"},
+  {ru:"Сертификат медиатора", kz:"Медиатор сертификаты"},
+];
+
+const TEAM = [
+  {ru:["Асхат Нурланов","Управляющий партнёр, 14 лет опыта"], kz:["Асхат Нұрланов","Басқарушы серіктес, 14 жыл тәжірибе"]},
+  {ru:["Динара Сатпаева","Юрист по трудовому праву"], kz:["Динара Сатпаева","Еңбек құқығы жөніндегі заңгер"]},
+  {ru:["Тимур Байжанов","Юрист по договорному праву"], kz:["Тимур Байжанов","Шарттық құқық жөніндегі заңгер"]},
+  {ru:["Аружан Кенжебаева","Юрист по семейным делам"], kz:["Аружан Кенжебаева","Отбасылық істер жөніндегі заңгер"]},
+];
+
+const FAQ = [
+  {ru:["Сколько стоит первичная консультация?","Первичная консультация бесплатна и длится до 30 минут."], kz:["Алғашқы кеңес қанша тұрады?","Алғашқы кеңес тегін және 30 минутқа дейін созылады."]},
+  {ru:["Работаете ли вы с клиентами из других городов?","Да, сопровождение возможно онлайн по всему Казахстану."], kz:["Басқа қалалардың клиенттерімен жұмыс істейсіздер ме?","Иә, Қазақстан бойынша онлайн сүйемелдеу мүмкін."]},
+  {ru:["Как быстро вы отвечаете на заявку?","В рабочее время — в течение 15 минут."], kz:["Өтінімге қаншалықты жылдам жауап бересіздер?","Жұмыс уақытында — 15 минут ішінде."]},
+  {ru:["Предоставляете ли вы договор на обслуживание?","Да, договор заключается до начала любых работ."], kz:["Қызмет көрсетуге шарт бересіздер ме?","Иә, кез келген жұмыс басталмас бұрын шарт жасалады."]},
+];
+
+// ---------- Render dynamic sections ----------
+function span(ru, kz){ return `<span data-lang="ru">${ru}</span><span data-lang="kz">${kz}</span>`; }
+
+document.getElementById('services-grid').innerHTML = SERVICES.map(s => `
+  <div class="service-card">
+    <div class="service-icon">${s.icon}</div>
+    <h3>${span(s.ru[0], s.kz[0])}</h3>
+    <p>${span(s.ru[1], s.kz[1])}</p>
+  </div>`).join('');
+
+document.getElementById('cert-grid').innerHTML = CERTS.map((c,i) => `
+  <div class="cert-item" data-title-ru="${c.ru}" data-title-kz="${c.kz}">
+    <div class="icon">📜</div>
+    <span>${span(c.ru, c.kz)}</span>
+  </div>`).join('');
+
+document.getElementById('team-grid').innerHTML = TEAM.map(t => `
+  <div class="team-card">
+    <div class="avatar">${t.ru[0].split(' ').map(w=>w[0]).join('')}</div>
+    <h3>${span(t.ru[0], t.kz[0])}</h3>
+    <span>${span(t.ru[1], t.kz[1])}</span>
+  </div>`).join('');
+
+document.getElementById('faq-list').innerHTML = FAQ.map((f,i) => `
+  <div class="faq-item">
+    <button class="faq-q"><span>${span(f.ru[0], f.kz[0])}</span><span class="plus">+</span></button>
+    <div class="faq-a"><p>${span(f.ru[1], f.kz[1])}</p></div>
+  </div>`).join('');
+
+// ---------- Language switch ----------
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.documentElement.setAttribute('data-active-lang', btn.dataset.setlang);
+    document.documentElement.lang = btn.dataset.setlang;
+  });
+});
+
+// ---------- FAQ accordion ----------
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+    if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+});
+
+// ---------- Lightbox ----------
+const lightbox = document.getElementById('lightbox');
+document.querySelectorAll('.cert-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const lang = document.documentElement.getAttribute('data-active-lang') || 'ru';
+    document.getElementById('lightbox-title').textContent = lang === 'kz' ? item.dataset.titleKz : item.dataset.titleRu;
+    lightbox.classList.add('open');
+  });
+});
+document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
+lightbox.addEventListener('click', e => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+
+// ---------- Forms (demo submit) ----------
+document.querySelectorAll('form').forEach(f => {
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const lang = document.documentElement.getAttribute('data-active-lang') || 'ru';
+    alert(lang === 'kz' ? 'Өтінім қабылданды! Жақын арада хабарласамыз.' : 'Заявка принята! Мы скоро свяжемся с вами.');
+    f.reset();
+  });
+});
+
+// ---------- Back to top ----------
+document.getElementById('to-top').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// ---------- Cookie banner ----------
+setTimeout(() => document.getElementById('cookie-banner').classList.add('show'), 1200);
+document.getElementById('cookie-accept').addEventListener('click', () => document.getElementById('cookie-banner').classList.remove('show'));
+
+// ---------- Copyright year ----------
+document.getElementById('copyright-year').textContent = `© ${new Date().getFullYear()} Lex & Partners`;
+</script>
+</body>
+</html>
