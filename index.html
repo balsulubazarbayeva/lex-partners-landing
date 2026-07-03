@@ -641,6 +641,7 @@
         <a href="#" aria-label="Instagram">I</a>
       </div>
       <span id="copyright-year">© 2026 Lex & Partners</span>
+      <button id="export-leads-btn" style="background:none;border:1px solid rgba(255,255,255,0.25);color:#a7adba;font-size:11px;padding:5px 10px;border-radius:4px;cursor:pointer;">Export leads (CSV)</button>
     </div>
   </div>
 </footer>
@@ -754,15 +755,73 @@ document.querySelectorAll('.cert-item').forEach(item => {
 document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
 lightbox.addEventListener('click', e => { if(e.target === lightbox) lightbox.classList.remove('open'); });
 
-// ---------- Forms (demo submit) ----------
+// ---------- Lead data schema & client-side pipeline ----------
+// Each submitted lead is normalized into a fixed schema before storage,
+// so that exported data is always clean and analysis-ready.
+const LEADS_KEY = 'lex_partners_leads_v1';
+
+function loadLeads() {
+  try {
+    return JSON.parse(localStorage.getItem(LEADS_KEY) || '[]');
+  } catch (e) { return []; }
+}
+
+function saveLead(lead) {
+  const leads = loadLeads();
+  leads.push(lead);
+  localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+  return leads.length;
+}
+
+function normalizeLead(form) {
+  const lang = document.documentElement.getAttribute('data-active-lang') || 'ru';
+  const nameInput = form.querySelector('input[type="text"]');
+  const phoneInput = form.querySelector('input[type="tel"]');
+  const rawName = nameInput ? nameInput.value.trim() : '';
+  const rawPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+  return {
+    name: rawName,
+    phone: rawPhone,
+    language: lang,               // ru | kz — which UI language the visitor used
+    form_type: form.id === 'quick-form' ? 'hero_quick_form' : 'contact_form',
+    submitted_at: new Date().toISOString(),
+  };
+}
+
+function leadsToCSV(leads) {
+  const header = ['name', 'phone', 'language', 'form_type', 'submitted_at'];
+  const rows = leads.map(l => header.map(k => `"${(l[k] ?? '').toString().replace(/"/g, '""')}"`).join(','));
+  return [header.join(','), ...rows].join('\n');
+}
+
+function downloadLeadsCSV() {
+  const leads = loadLeads();
+  const csv = leadsToCSV(leads);
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'leads_export.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ---------- Forms (real client-side pipeline: validate -> normalize -> store) ----------
 document.querySelectorAll('form').forEach(f => {
   f.addEventListener('submit', e => {
     e.preventDefault();
     const lang = document.documentElement.getAttribute('data-active-lang') || 'ru';
+    const lead = normalizeLead(f);
+    const count = saveLead(lead);
+    console.log('Lead stored:', lead, '| total leads:', count);
     alert(lang === 'kz' ? 'Өтінім қабылданды! Жақын арада хабарласамыз.' : 'Заявка принята! Мы скоро свяжемся с вами.');
     f.reset();
   });
 });
+
+// Admin/demo export control (footer) — lets the business owner export
+// accumulated leads as a clean CSV for further analysis.
+const exportBtn = document.getElementById('export-leads-btn');
+if (exportBtn) exportBtn.addEventListener('click', downloadLeadsCSV);
 
 // ---------- Back to top ----------
 document.getElementById('to-top').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
